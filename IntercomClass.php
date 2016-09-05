@@ -1,6 +1,9 @@
 <?php
 
 class IntercomClass {
+    
+    public $_username = 'this-will-be-your-app-id';
+    public $_password = 'this-will-be-your-auth-key';
 
     function callIntercomApi($param, $method = 'POST', $header = NULL) {
         $url = $param["url"];
@@ -28,17 +31,22 @@ class IntercomClass {
         if (curl_errno($objURL)) {
             $info = curl_getinfo($objURL);
             $response = curl_error($objURL);
-            logmonitor(__FUNCTION__, print_r($info, 1) . "::" . $response);
         }
         curl_close($objURL);
         return $response;
     }
     
-    function createUser(){
+    function createUser($dataArr){
+        $param['url'] = '';
+        $param['data'] = $dataArr;
         $this->callIntercomApi($param, $method, $header);
     }
     
     function deleteUser(){
+        
+    }
+    
+    function createEvent(){
         
     }
 
