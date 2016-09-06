@@ -37,9 +37,10 @@ class IntercomClass {
     }
     
     function createUser($dataArr){
-        $param['url'] = '';
+        //$dataArr should br 
+        $param['url'] = 'https://api.intercom.io/users';
         $param['data'] = $dataArr;
-        $this->callIntercomApi($param, $method, $header);
+        $this->callIntercomApi($param, 'POST', $header);
     }
     
     function deleteUser(){
